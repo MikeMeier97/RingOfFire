@@ -10,7 +10,9 @@ export class GameComponent implements OnInit {
   pickCardAnimation = false;
   game: Game = new Game();
   currentCard: string = 'ace_1';
-  constructor() {}
+  constructor() {
+    console.log(this.game.stack.pop());
+  }
   ngOnInit(): void {}
   takeCard() {
     if (!this.pickCardAnimation) {
@@ -23,7 +25,6 @@ export class GameComponent implements OnInit {
     }
   }
   newGame() {
-    console.log(this.game.stack.pop);
     this.game = new Game();
   }
 }
