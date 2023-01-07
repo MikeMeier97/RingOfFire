@@ -24,8 +24,12 @@
 }
 .pick-card {
     transition: all 175ms ease-in-out;
-    animation: pickCardAnimation 2s ease-in-out;
+    animation: pickCardAnimation 1s ease-in-out;
     transform: scale(1) translateX(140px) translateY(-220px);
+}
+.playedCard{
+  right: 25px;
+  transform: scale(1) translateX(140px) translateY(-220px);
 }
 @keyframes pickCardAnimation {
     0% {
@@ -41,4 +45,8 @@
         transform: scale(1) translateX(140px) translateY(-220px);
     }
 
+}
+.playerPosition {
+  position: absolute;
+  right: 0; 
 }
