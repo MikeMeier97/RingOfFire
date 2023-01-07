@@ -8,16 +8,14 @@ import { Game } from '../models/game';
 })
 export class GameComponent implements OnInit {
   pickCardAnimation = false;
-  game: Game = new Game();
-  currentCard: string = 'ace_1';
-  constructor() {
-    console.log(this.game.stack.pop());
-  }
+  game: Game  = new Game();
+  currentCard: string = '';
+  constructor() {}
   ngOnInit(): void {}
   takeCard() {
     if (!this.pickCardAnimation) {
       this.pickCardAnimation = true;
-      //this.currentCard = this.game.stack.pop();
+      this.currentCard = this.game.stack.pop();
       setTimeout(() => {
         this.pickCardAnimation = false;
         this.game.playedCards.push(this.currentCard);

@@ -5,24 +5,21 @@ export class Game {
     public currentPlayer: number = 0; 
 
     constructor() {
-        for(let i = 0; i < 14; i++) {
-            this.stack.push('spade_'+ i);
+        for(let i = 1; i < 14; i++) {
+            this.stack.push('ace_'+ i);
             this.stack.push('hearts_'+ i);
             this.stack.push('clubs_'+ i);
             this.stack.push('diamonds_'+ i);
         }
-        shuffle(this.stack);
-        shuffle(this.stack);
+        /**
+         * mix the cards
+         */
+        for(let j = 0; j < 10; j++){
+            shuffleArray(this.stack);
+        }
     }
 }
-
-function shuffle(array: string[]) {
-    var currentIndex = array.length, temporaryValue, randomIndex; 
-    while (0 !== currentIndex) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1; 
-        temporaryValue = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-    }
-    return array; 
+ 
+function shuffleArray(inputArray){
+    inputArray.sort(()=> Math.random() - 0.5);
 }
