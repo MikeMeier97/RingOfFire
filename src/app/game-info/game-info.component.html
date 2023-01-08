@@ -1,5 +1,5 @@
 <mat-card>
-    <mat-card-title style="margin-top: 10px; margin-left: 15px; ">{{ title }}</mat-card-title>
-    <mat-card-content>{{ description }}</mat-card-content>
+    <mat-card-title style="margin-top: 10px; margin-left: 15px; ">{{ card ? title : 'Please pick a card'}}</mat-card-title>
+    <mat-card-content>{{ card ? description : 'Click on the stack to start the game. Have fun!' }}</mat-card-content>
 </mat-card>
   
