@@ -18,6 +18,14 @@ export class Game {
             shuffleArray(this.stack);
         }
     }
+    public toJson() {
+        return{
+            players: this.players,
+            stack: this.stack, 
+            playedCards: this.playedCards, 
+            currentPlayer: this.currentPlayer
+        };
+    }
 }
  
 function shuffleArray(inputArray){
