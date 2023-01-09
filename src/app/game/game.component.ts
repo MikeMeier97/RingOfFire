@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Game } from '../models/game';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
-import { Firestore, collectionData, collection, setDoc, doc, addDoc  } from '@angular/fire/firestore';
+import { Firestore, collectionData, collection, setDoc, doc, addDoc, docData  } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { throwDialogContentAlreadyAttachedError } from '@angular/cdk/dialog';
 import { ActivatedRoute } from '@angular/router';
@@ -17,20 +17,16 @@ export class GameComponent implements OnInit {
   pickCardAnimation = false;
   game: Game  = new Game();
   currentCard: string = '';
-  constructor(private firestore: Firestore, public dialog: MatDialog, private router: ActivatedRoute) {
-    const coll = collection(firestore, 'games');    // collection abholen aus firestore und welche collection wir wollen
-    this.game$ = collectionData(coll); // mit collectionData holen wir die daten ab aus coll. 
-    this.game$.subscribe((game) => { // Subscribe um daten zu bekommen wenn sich was ändert.
-      console.log(game);
-    });
-  }
+  constructor(private firestore: Firestore, public dialog: MatDialog, private router: ActivatedRoute) {}
   ngOnInit(): void { 
-    this.newGame();
+    //this.newGame();
     this.router.params.subscribe((params) => {
-      console.log(params);
-    }); 
-
-  }
+      const coll = collection(this.firestore, 'games').doc(params); 
+      this.game$ = collectionData(coll); 
+      this.game$.subscribe((game) => { 
+      });
+      });
+    }
   takeCard() {
     if (!this.pickCardAnimation) {
       this.pickCardAnimation = true;
@@ -47,7 +43,7 @@ export class GameComponent implements OnInit {
     const coll = collection(this.firestore, 'games');
     let gameInfo = await addDoc(coll, {game: this.game.toJson()})
   }
-
+  
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAddPlayerComponent);
     dialogRef.afterClosed().subscribe((name: string) => {
