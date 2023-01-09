@@ -5,7 +5,7 @@ import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player
 import { Firestore, collectionData, collection, setDoc, doc, addDoc  } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { throwDialogContentAlreadyAttachedError } from '@angular/cdk/dialog';
-import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-game',
@@ -17,14 +17,20 @@ export class GameComponent implements OnInit {
   pickCardAnimation = false;
   game: Game  = new Game();
   currentCard: string = '';
-  constructor(private firestore: Firestore, public dialog: MatDialog, private router: Router) {
+  constructor(private firestore: Firestore, public dialog: MatDialog, private router: ActivatedRoute) {
     const coll = collection(firestore, 'games');    // collection abholen aus firestore und welche collection wir wollen
     this.game$ = collectionData(coll); // mit collectionData holen wir die daten ab aus coll. 
     this.game$.subscribe((game) => { // Subscribe um daten zu bekommen wenn sich was ändert.
       console.log(game);
     });
   }
-  ngOnInit(): void { this.newGame() }
+  ngOnInit(): void { 
+    this.newGame();
+    this.router.params.subscribe((params) => {
+      console.log(params);
+    }); 
+
+  }
   takeCard() {
     if (!this.pickCardAnimation) {
       this.pickCardAnimation = true;
