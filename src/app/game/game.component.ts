@@ -19,9 +19,9 @@ export class GameComponent implements OnInit {
   currentCard: string = '';
   constructor(private firestore: Firestore, public dialog: MatDialog, private router: ActivatedRoute) {}
   ngOnInit(): void { 
-    //this.newGame();
+    this.newGame();
     this.router.params.subscribe((params) => {
-      const coll = collection(this.firestore, 'games').doc(params); 
+      const coll = collection(this.firestore, 'games');//.doc(params); 
       this.game$ = collectionData(coll); 
       this.game$.subscribe((game) => { 
       });
