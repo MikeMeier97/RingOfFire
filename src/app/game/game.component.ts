@@ -20,15 +20,18 @@ export class GameComponent implements OnInit {
   currentCard: string = '';
   constructor(private firestore: Firestore, public dialog: MatDialog, private router: ActivatedRoute) {}
   ngOnInit(): void { 
-
     this.newGame();
     this.router.params.subscribe((params) => {
       this.gameId = params['id'];
-      const coll = collection(this.firestore, 'games') 
+      const coll = collection(this.firestore, 'games');
       const docRef = doc(coll, this.gameId);
       this.game$ = docData(docRef); 
-      this.game$.subscribe((game) => { 
+      this.game$.subscribe((game: any) => { 
         console.log(game);
+        this.game.currentPlayer = game.currentPlayer;
+        this.game.playedCards = game.playedCards; 
+        this.game.players = game.players; 
+        this.game.stack = game.stack; 
       });
       });
     }
@@ -45,8 +48,8 @@ export class GameComponent implements OnInit {
     }
   }
   async newGame() {
-    const coll = collection(this.firestore, 'games');
-    let gameInfo = await addDoc(coll, {game: this.game.toJson()})
+    //const coll = collection(this.firestore, 'games');
+    //let gameInfo = await addDoc(coll, {game: this.game.toJson()})
   }
   
   openDialog(): void {
