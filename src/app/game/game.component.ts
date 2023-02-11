@@ -27,7 +27,7 @@ export class GameComponent implements OnInit {
       const docRef = doc(coll, this.gameId);
       this.game$ = docData(docRef); 
       this.game$.subscribe((game: any) => { 
-        console.log(game);
+        console.log('Update game',game);
         this.game.currentPlayer = game.currentPlayer;
         this.game.playedCards = game.playedCards; 
         this.game.players = game.players; 
@@ -48,6 +48,7 @@ export class GameComponent implements OnInit {
     }
   }
   async newGame() {
+    //this.game = new Game();
     //const coll = collection(this.firestore, 'games');
     //let gameInfo = await addDoc(coll, {game: this.game.toJson()})
   }
