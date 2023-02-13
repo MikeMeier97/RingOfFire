@@ -25,19 +25,21 @@ export class GameComponent implements OnInit {
       this.gameId = params['id'];
       const coll = collection(this.firestore, 'games');
       const docRef = doc(coll, this.gameId);
-      this.game$ = docData(docRef); 
+      this.game$ = docData(docRef);     
       this.game$.subscribe((game: any) => { 
         console.log('Update game',game);
-        this.game.currentPlayer = game.currentPlayer;
-        this.game.playedCards = game.playedCards; 
-        this.game.players = game.players; 
-        this.game.stack = game.stack; 
+        this.game.currentPlayer = game.game.currentPlayer;
+        this.game.playedCards = game.game.playedCards; 
+        this.game.players = game.game.players; 
+        this.game.stack = game.game.stack; 
+        console.log(this.game);
       });
       });
     }
   takeCard() {
     if (!this.pickCardAnimation) {
       this.pickCardAnimation = true;
+      console.log(this.game);
       this.currentCard = this.game.stack.pop();
       setTimeout(() => {
         this.pickCardAnimation = false;
