@@ -50,9 +50,8 @@ export class GameComponent implements OnInit {
     }
   }
   async newGame() {
-    //this.game = new Game();
-    //const coll = collection(this.firestore, 'games');
-    //let gameInfo = await addDoc(coll, {game: this.game.toJson()})
+    this.game = new Game();
+
   }
   
   openDialog(): void {
