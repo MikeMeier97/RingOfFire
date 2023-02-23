@@ -1,14 +1,16 @@
 {
+  "projects": {
+    "default": "ring-of-fire-5bcf2",
+    "firestore": "ring-of-fire-5bcf2"
+  },
   "targets": {
-    "ring-of-fire-e9505": {
+    "ring-of-fire-5bcf2": {
       "hosting": {
         "RingOfFire": [
-          "ring-of-fire-e9505"
+          "ring-of-fire-5bcf2"
         ]
       }
     }
   },
-  "projects": {
-    "default": "ring-of-fire-e9505"
-  }
+  "etags": {}
 }
