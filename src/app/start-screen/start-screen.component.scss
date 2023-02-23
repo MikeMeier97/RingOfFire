@@ -25,3 +25,54 @@
     }
   }
 }
+
+@media (max-width: 960px) {
+  .start-screen {
+    overflow: hidden; 
+  }
+  .start-button {
+    overflow: hidden;
+  }
+}
+@media (max-width: 850px) {
+  .start-screen {
+    img {
+      height: 60vh;
+    }
+  }
+  .start-button{
+    top: 67vh;
+    img {
+      width: 300px;
+      height: 45px;
+    }
+  }
+}
+@media (max-width: 650px) {
+  .start-screen {
+    img {
+      height: 40vh;
+    }
+  }
+  .start-button{
+    top: 62vh;
+    img {
+      width: 200px;
+      height: 30px;
+    }
+  }
+}
+@media (max-width: 400px) {
+  .start-screen {
+    img {
+      height: 30vh;
+    }
+  }
+  .start-button{
+    top: 58vh;
+    img {
+      width: 150px;
+      height: 22px;
+    }
+  }
+}
