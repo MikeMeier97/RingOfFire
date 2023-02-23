@@ -31,6 +31,9 @@ export class GameComponent implements OnInit {
         this.game.stack = game.stack; 
         this.game.currentCard = game.currentCard;
         this.game.pickCardAnimation = game.pickCardAnimation;
+        if(this.game.players.length < 1) {
+          this.openDialog();
+        }
       });
       });
     }
