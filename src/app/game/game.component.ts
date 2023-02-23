@@ -25,7 +25,6 @@ export class GameComponent implements OnInit {
         .doc(this.gameId)
         .valueChanges()
         .subscribe((game: any) => {
-        console.log('Update game',game);
         this.game.currentPlayer = game.currentPlayer;
         this.game.playedCards = game.playedCards; 
         this.game.players = game.players; 
